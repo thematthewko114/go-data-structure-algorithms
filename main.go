@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	// queueADT "go-dsa/queues"
+	queueADT "go-dsa/queues"
 	// searchingAlgo "go-dsa/searching-algo"
 	// sortingAlgo "go-dsa/sorting-algo"
 	stackADT "go-dsa/stacks"
@@ -18,6 +18,7 @@ import (
 func main() {
 	modeArr := []string{"home", "stack", "queue", "hash table", "linked list", "binary tree", "linear search", "binary search", "interpolation search", "bubble sort", "quick sort", "selection sort", "insertion sort", "shell sort", "comb sort", "merge sort", "radix sort", "pancake sort", "rabin karp", "levenshtein distance", "longest common subsequence", "kmp algorithm"}
 	stack := stackADT.NewStack()
+	queue := queueADT.NewQueue()
 	mode := 0
 	fmt.Println(mode)
 	reader := bufio.NewReader(os.Stdin)
@@ -45,21 +46,28 @@ func main() {
 		}
 
 		switch mode {
-		case 0:
-			fmt.Println("Back in home mode")
 		case 1:
 			if text == "--help" {
 				utils.PrintStackHelp()
-			} else if strings.HasPrefix(text, "push") {
-				stack.Push(text[4:])
+			} else if strings.HasPrefix(text, "push ") {
+				stack.Push(text[5:])
 			} else if text == "pop" {
-				fmt.Println("Removed item:", stack.Pop())
+				fmt.Println("Removed stack item:", stack.Pop())
 			} else if modeSwitch == false {
 				fmt.Println("Invalid command")
 			}
 			stack.PrintStack()
 		case 2:
-			fmt.Println("Entering queue mode")
+			if text == "--help" {
+				utils.PrintQueueHelp()
+			} else if strings.HasPrefix(text, "enqueue") {
+				queue.Enqueue(text[8:])
+			} else if text == "dequeue" {
+				fmt.Println("Removed queue item:", queue.Dequeue())
+			} else if modeSwitch == false {
+				fmt.Println("Invalid command")
+			}
+			queue.PrintQueue()
 		case 3:
 			fmt.Println("Entering hash table mode")
 		case 4:

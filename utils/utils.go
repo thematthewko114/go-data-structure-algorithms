@@ -47,6 +47,14 @@ func PrintStackHelp() {
 	fmt.Println("Type 'pop' to pop an element from the stack, and the return value will be printed, e.g. 'pop'")
 }
 
+func PrintQueueHelp() {
+	fmt.Println("=====================")
+	fmt.Println("Guide to use this queue:")
+	fmt.Println("You are given a queue, you can perform enqueue and dequeue operations")
+	fmt.Println("Type 'enqueue <string>' to enqueue an element to the queue, e.g. 'enqueue hello'")
+	fmt.Println("Type 'dequeue' to dequeue an element from the queue, and the return value will be printed, e.g. 'dequeue'")
+}
+
 func GetArray(n int, sorted bool) []int {
 	array := make([]int, n)
 	for i := 0; i < n; i++ {
