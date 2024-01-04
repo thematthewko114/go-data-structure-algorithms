@@ -10,6 +10,7 @@ import (
 	searchingAlgo "go-dsa/searching-algo"
 	sortingAlgo "go-dsa/sorting-algo"
 	stackADT "go-dsa/stacks"
+	treeAlgo "go-dsa/tree-algo"
 	utils "go-dsa/utils"
 	"os"
 )
@@ -205,4 +206,11 @@ func main() {
 	kmpLength := patternSearchingAlgo.KMP_SearchString("AABAACAADAABAABAAABAACAADAABAABA", "AABA")
 	fmt.Println("KMP index: ", kmpLength)
 	fmt.Println("Time complexity: O(m+n), space complexity: O(m)")
+
+	fmt.Println("--------------")
+	fmt.Println("Tree traversals algorithms")
+	tree := treeAlgo.NewBinaryTree()
+	tree.Insert("ten", 10)
+	tree.Insert("eleven", 11)
+	tree.Insert("nine", 9)
 }

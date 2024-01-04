@@ -20,23 +20,13 @@ func PrintHelp() {
 	fmt.Println("Type '%3' to use hash tables")
 	fmt.Println("Type '%4' to use linked lists")
 	fmt.Println("Type '%5' to use binary trees")
-	fmt.Println("Type '%6' to use linear search")
-	fmt.Println("Type '%7' to use binary search")
-	fmt.Println("Type '%8' to use interpolation search")
-	fmt.Println("Type '%9' to use bubble sort")
-	fmt.Println("Type '%10' to use quick sort")
-	fmt.Println("Type '%11' to use selection sort")
-	fmt.Println("Type '%12' to use insertion sort")
-	fmt.Println("Type '%13' to use shell sort")
-	fmt.Println("Type '%14' to use comb sort")
-	fmt.Println("Type '%15' to use merge sort")
-	fmt.Println("Type '%16' to use radix sort")
-	fmt.Println("Type '%17' to use pancake sort")
-	fmt.Println("Type '%18' to use Rabin Karp algorithm")
-	fmt.Println("Type '%19' to use Levenshtein distance")
-	fmt.Println("Type '%20' to use Longest common subsequence")
-	fmt.Println("Type '%21' to use KMP algorithm")
+	fmt.Println("Type '%6' to use searching algorithms")
+	fmt.Println("Type '%7' to use sorting algorithms")
+	fmt.Println("Type '%8' to use pattern searching algorithms")
+	fmt.Println("Type '%9' to use tree traversal algorithms")
 	fmt.Println("Type --help to read manual inside the mode")
+	fmt.Println("Type --exit to exit the shell")
+	fmt.Println("Type --clear to reset all the data structures")
 }
 
 func PrintStackHelp() {
@@ -104,6 +94,15 @@ func PatternSearchAlgoHelp() {
 	fmt.Println("Or enter 'levenshtein help me find a substring | help you find your substring'")
 	fmt.Println("Or enter 'longest common subsequence help me find a substring | help you find your substring'")
 	fmt.Println("Or enter 'kmp help me find a substring | help you find your substring'")
+}
+
+func TreeAlgoHelp() {
+	fmt.Println("=====================")
+	fmt.Println("Guide to use this mode:")
+	fmt.Println("You are given a binary tree, you can insert nodes and visualize the results of the tree traversals")
+	fmt.Println("Type 'insert <string> <integer>' to insert an element to the binary tree including the data and weight (weight corresponds to binary trees' insertion), e.g. 'insert ten 10")
+	fmt.Println("Type traverse' to print the traversal results of the binary tree")
+	fmt.Println("Type 'print' to print the binary tree")
 }
 
 func GetArray(n int, sorted bool) []int {

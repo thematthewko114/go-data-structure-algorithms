@@ -3,11 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"go-dsa/utils"
-	"os"
-	"strconv"
-	"strings"
-
 	binaryTreeADT "go-dsa/binarytrees"
 	hashtableADT "go-dsa/hashtables"
 	linkedlistADT "go-dsa/linkedlists"
@@ -16,20 +11,25 @@ import (
 	searchingAlgo "go-dsa/searching-algo"
 	sortingAlgo "go-dsa/sorting-algo"
 	stackADT "go-dsa/stacks"
+	treeAlgo "go-dsa/tree-algo"
+	"go-dsa/utils"
+	"os"
+	"strconv"
+	"strings"
 )
 
 func main() {
-	modeArr := []string{"home", "stack", "queue", "hash table", "linked list", "binary tree", "searching", "sorting", "pattern searching"}
+	modeArr := []string{"home", "stack", "queue", "hash table", "linked list", "binary tree", "searching", "sorting", "pattern searching", "tree traversals"}
 	stack := stackADT.NewStack()
 	queue := queueADT.NewQueue()
 	hashtable := hashtableADT.NewHashTable()
 	linkedList := linkedlistADT.NewLinkedList()
 	binaryTree := binaryTreeADT.NewBinaryTree()
+	treeForTraversals := treeAlgo.NewBinaryTree()
 	arrForSearching := utils.GetArray(5, true)
 	arrForSorting := utils.GetArray(5, false)
 	searchingInt := 0
 	mode := 0
-	fmt.Println(mode)
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Println("Simple Shell for data structures")
 	utils.PrintSeparator()
@@ -40,15 +40,26 @@ func main() {
 		fmt.Print("> ")
 		text, _ := reader.ReadString('\n')
 		text = strings.Replace(text, "\n", "", -1)
-		if text == "exit" {
+		if text == "--exit" {
 			break
 		} else if text == "--help" {
 			utils.PrintHelp()
+			continue
+		} else if text == "--clean" {
+			stack = stackADT.NewStack()
+			queue = queueADT.NewQueue()
+			hashtable = hashtableADT.NewHashTable()
+			linkedList = linkedlistADT.NewLinkedList()
+			binaryTree = binaryTreeADT.NewBinaryTree()
+			treeForTraversals = treeAlgo.NewBinaryTree()
+			arrForSearching = utils.GetArray(5, true)
+			arrForSorting = utils.GetArray(5, false)
+			continue
 		}
 		checkNum := text[1:]
 		checkModeNum, _ := strconv.Atoi(checkNum)
 		modeSwitch := false
-		if strings.HasPrefix(text, "%") && checkModeNum <= 8 && checkModeNum >= 0 {
+		if strings.HasPrefix(text, "%") && checkModeNum <= 9 && checkModeNum >= 0 {
 			mode, _ = strconv.Atoi(checkNum)
 			fmt.Printf("Entered %s mode\n", modeArr[mode])
 			modeSwitch = true
@@ -122,9 +133,9 @@ func main() {
 				value, _ := strconv.Atoi(splicedInput[1])
 				binaryTree.Insert(value)
 				fmt.Println("Inserted", splicedInput[1], "to binary tree")
-				binaryTree.GetRoot().PrintTree(os.Stdout, 0, 'M')
+				binaryTree.GetRoot().PrintTree(os.Stdout, 0, 'R')
 			} else if strings.HasPrefix(text, "print") {
-				binaryTree.GetRoot().PrintTree(os.Stdout, 0, 'M')
+				binaryTree.GetRoot().PrintTree(os.Stdout, 0, 'R')
 			} else if modeSwitch == false {
 				fmt.Println("Invalid command")
 			}
@@ -296,6 +307,24 @@ func main() {
 				index := patternSearchingAlgo.KMP_SearchString(string1, string2)
 				fmt.Println("KMP index", index)
 				fmt.Println("Time complexity: O(m+n), space complexity: O(m)")
+			} else if modeSwitch == false {
+				fmt.Println("Invalid command")
+			}
+		case 9:
+			if text == "--help" {
+				utils.TreeAlgoHelp()
+			} else if strings.HasPrefix(text, "insert ") {
+				splicedInput := strings.Split(text[7:], " ")
+				weight, err := strconv.Atoi(splicedInput[1])
+				if err != nil {
+					fmt.Println(err.Error())
+				}
+				treeForTraversals.Insert(splicedInput[0], weight)
+				treeForTraversals.GetRoot().PrintTree(os.Stdout, 0, 'R')
+			} else if text == "traverse" {
+				fmt.Println("Pre-order traversal:", treeAlgo.PreorderTraversal(treeForTraversals.GetRoot()))
+				fmt.Println("In-order traversal:", treeAlgo.InorderTraversal(treeForTraversals.GetRoot()))
+				fmt.Println("Post-order traversal:", treeAlgo.PostorderTraversal(treeForTraversals.GetRoot()))
 			} else if modeSwitch == false {
 				fmt.Println("Invalid command")
 			}
