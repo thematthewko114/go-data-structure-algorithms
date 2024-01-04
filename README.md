@@ -41,6 +41,9 @@ Here is the list of the implementations so far
 3. Longest Common Subsequence
 4. Knuth-Morris-Pratt (KMP) Algorithm
 
+## Tree Algorithms
+1. Pre-order, Post-order, In-order Tree Traversals
+
 ## How to use it
 
 Prerequisite: you need to have Go installed on your computer, that's all
