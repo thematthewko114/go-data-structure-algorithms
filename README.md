@@ -13,7 +13,7 @@ Clone the repository, modify the Go version in go.mod if necessary
 If you want to run the demo program, run this:
 ```
 cd demo
-go run demo.go
+go run demo/demo.go
 ```
 
 If you want to run the console app, run this:

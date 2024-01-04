@@ -1,4 +1,4 @@
-package demo
+package main
 
 import (
 	"fmt"
@@ -58,7 +58,7 @@ func main() {
 	binaryTree.Insert(5).Insert(1).Insert(2).Insert(3).Insert(4).Insert(6).Insert(7).Insert(8)
 	binaryTree.GetRoot().PrintTree(os.Stdout, 0, 'M')
 
-	arr := utils.GetArray(200, true)
+	arr := utils.GetArray(200000, true)
 
 	// linear search
 	fmt.Println("--------------")
@@ -90,7 +90,7 @@ func main() {
 	fmt.Printf("\n")
 	fmt.Println("Time complexity: O(log log n), space complexity: O(1)")
 
-	arr = utils.GetArray(200000, false)
+	arr = utils.GetArray(2000, false)
 	// bubble sort
 	fmt.Println("--------------")
 	fmt.Println("Bubble sort")
