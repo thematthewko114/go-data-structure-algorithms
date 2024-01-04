@@ -1,4 +1,4 @@
-package patternSeachingAlgo
+package patternSearchingAlgo
 
 const base = 16777619
 

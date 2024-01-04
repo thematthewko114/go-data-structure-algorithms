@@ -5,7 +5,7 @@ import (
 )
 
 type Node struct {
-	data int
+	data string
 	next *Node
 }
 
@@ -19,7 +19,7 @@ func NewLinkedList() *LinkedList {
 	}
 }
 
-func (l *LinkedList) Add(value int) {
+func (l *LinkedList) Add(value string) {
 	newNode := &Node{data: value}
 
 	if l.head == nil {
@@ -35,7 +35,7 @@ func (l *LinkedList) Add(value int) {
 	curr.next = newNode
 }
 
-func (l *LinkedList) Remove(value int) {
+func (l *LinkedList) Remove(value string) {
 	if l.head == nil {
 		return
 	}
@@ -56,10 +56,12 @@ func (l *LinkedList) Remove(value int) {
 }
 
 func (l *LinkedList) PrintList() {
+	fmt.Print("Front |")
 	curr := l.head
 	for curr != nil {
-		fmt.Printf("%d ", curr.data)
+		fmt.Printf("%s ", curr.data)
 		curr = curr.next
 	}
+	fmt.Print("| Back")
 	fmt.Println()
 }

@@ -8,7 +8,7 @@ import (
 type BinaryNode struct {
 	left  *BinaryNode
 	right *BinaryNode
-	data  int64
+	data  int
 }
 
 type BinaryTree struct {
@@ -19,7 +19,7 @@ func NewBinaryTree() *BinaryTree {
 	return &BinaryTree{nil}
 }
 
-func (t *BinaryTree) Insert(data int64) *BinaryTree {
+func (t *BinaryTree) Insert(data int) *BinaryTree {
 	if t.root == nil {
 		t.root = &BinaryNode{data: data, left: nil, right: nil}
 	} else {
@@ -28,7 +28,7 @@ func (t *BinaryTree) Insert(data int64) *BinaryTree {
 	return t
 }
 
-func (n *BinaryNode) InsertNode(data int64) {
+func (n *BinaryNode) InsertNode(data int) {
 	if n == nil {
 		return
 	} else if data <= n.data {

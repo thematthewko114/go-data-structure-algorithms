@@ -5,7 +5,7 @@ import (
 	binarytreeADT "go-dsa/binarytrees"
 	hashtableADT "go-dsa/hashtables"
 	linkedlistADT "go-dsa/linkedlists"
-	patternSeachingAlgo "go-dsa/pattern-seaching-algo"
+	patternSearchingAlgo "go-dsa/pattern-seaching-algo"
 	queueADT "go-dsa/queues"
 	searchingAlgo "go-dsa/searching-algo"
 	sortingAlgo "go-dsa/sorting-algo"
@@ -38,17 +38,17 @@ func main() {
 	fmt.Println("--------------")
 	fmt.Println("Hash tables")
 	hashtable := hashtableADT.NewHashTable()
-	hashtable.Insert(1, "one")
-	fmt.Println(hashtable.Get(1))
+	hashtable.Insert("one", 1)
+	fmt.Println(hashtable.Get("one"))
 
 	// linked lists
 	fmt.Println("--------------")
 	fmt.Println("Linked lists")
 	linkedlist := linkedlistADT.NewLinkedList()
-	linkedlist.Add(1)
-	linkedlist.Add(2)
-	linkedlist.Add(3)
-	linkedlist.Remove(2)
+	linkedlist.Add("one")
+	linkedlist.Add("two")
+	linkedlist.Add("three")
+	linkedlist.Remove("two")
 	linkedlist.PrintList()
 
 	// binary trees
@@ -58,7 +58,7 @@ func main() {
 	binaryTree.Insert(5).Insert(1).Insert(2).Insert(3).Insert(4).Insert(6).Insert(7).Insert(8)
 	binaryTree.GetRoot().PrintTree(os.Stdout, 0, 'M')
 
-	arr := utils.GetArray(200000, true)
+	arr := utils.GetArray(200, true)
 
 	// linear search
 	fmt.Println("--------------")
@@ -177,7 +177,7 @@ func main() {
 	fmt.Println("Rabin Karp algorithm")
 	txt := "Help me find a substring"
 	patterns := []string{"you", "string"}
-	matches := patternSeachingAlgo.RabinKarpAlgo(txt, patterns)
+	matches := patternSearchingAlgo.RabinKarpAlgo(txt, patterns)
 	fmt.Println(matches)
 	fmt.Println("Time complexity: O(mn), space complexity: O(1)")
 
@@ -186,14 +186,14 @@ func main() {
 	fmt.Println("Levenshtein distance")
 	txt1 := "Help me find a substring"
 	txt2 := "Help me find a substring"
-	score := patternSeachingAlgo.LevenshteinDistance(txt1, txt2)
+	score := patternSearchingAlgo.LevenshteinDistance(txt1, txt2)
 	fmt.Println("String distance: ", score)
 	fmt.Println("Time complexity: O(mn), space complexity: O(n)")
 
 	// Longest common subsequence
 	fmt.Println("--------------")
 	fmt.Println("Longest common subsequence")
-	lcsLength := patternSeachingAlgo.LCS("AABAACAADAABAABAAABAACAADAABAABA", "CABABBDD", 32, 8)
+	lcsLength := patternSearchingAlgo.LCS("AABAACAADAABAABAAABAACAADAABAABA", "CABABBDD", 32, 8)
 	fmt.Println("LCS: ", lcsLength)
 	fmt.Println("Time complexity: O(2^mn), space complexity: O(1)")
 
@@ -202,7 +202,7 @@ func main() {
 	fmt.Println("KMP algorithm")
 	// txt3 := "Help me find a substring"
 	// txt4 := "Help you find a substring"
-	kmpLength := patternSeachingAlgo.KMP_SearchString("AABAACAADAABAABAAABAACAADAABAABA", "AABA")
+	kmpLength := patternSearchingAlgo.KMP_SearchString("AABAACAADAABAABAAABAACAADAABAABA", "AABA")
 	fmt.Println("KMP index: ", kmpLength)
 	fmt.Println("Time complexity: O(m+n), space complexity: O(m)")
 }
